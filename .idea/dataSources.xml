@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="3515261476">
+    <data-source source="LOCAL" name="HSQLDB (Remote) - stock@localhost" uuid="080d4bf5-9278-41e5-a49b-febc3a3e2475">
+      <driver-ref>hsqldb.remote</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.hsqldb.jdbcDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:hsql://localhost:9001/stock</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="HSQLDB (Remote) - invoices@localhost" uuid="16529a67-a78f-46b5-a682-6716cd978fea">
+      <driver-ref>hsqldb.remote</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.hsqldb.jdbcDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:hsql://localhost:9001/invoices</jdbc-url>
+    </data-source>
+  </component>
+</project>

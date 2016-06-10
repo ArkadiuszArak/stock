@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="HSQLDB (Remote) - stock@localhost" uuid="080d4bf5-9278-41e5-a49b-febc3a3e2475">
+    <database-info product="HSQL Database Engine" version="2.3.4" jdbc-version="4.0" driver-name="HSQL Database Engine Driver" driver-version="2.3.4">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/>
+    <schema name="PUBLIC" catalog="PUBLIC"/>
+    <table name="CLIENTS" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ADDRESS" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="AMOUNTCENTS" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="AMOUNTCURRENCY" sqlType="CHARACTER" precision="3" scale="0" nullable="false" jdbcType="1" def="J1BMTic="/>
+      <column name="ACTIVE" sqlType="BOOLEAN" precision="0" scale="0" nullable="false" jdbcType="16" def="VFJVRQ=="/>
+      <column name="STATUSID" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <primary-key name="SYS_PK_11037" columns="ID"/>
+      <foreign-key name="SYS_FK_11740" columns="STATUSID" ref-table="STATUSES" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="PRODUCTS" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="TYPE" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="AVAILABLE" sqlType="BOOLEAN" precision="0" scale="0" nullable="false" jdbcType="16" def="VFJVRQ=="/>
+      <column name="PRICECENTS" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="PRICECURRENCY" sqlType="CHARACTER" precision="3" scale="0" nullable="false" jdbcType="1" def="J1BMTic="/>
+      <column name="LENGTH" sqlType="BIGINT" precision="64" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="SYS_PK_10892" columns="ID"/>
+    </table>
+    <table name="PRODUCTSTAGS" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="PRODUCTID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>
+      <column name="TAGID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="SYS_PK_10916" columns="PRODUCTID,TAGID"/>
+      <foreign-key name="SYS_FK_10914" columns="PRODUCTID" ref-table="PRODUCTS" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="SYS_FK_10915" columns="TAGID" ref-table="TAGS" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="PURCHASES" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="CLIENTID" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="CREATEDATE" sqlType="TIMESTAMP" precision="26" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="SYS_PK_11069" columns="ID"/>
+      <foreign-key name="SYS_FK_11070" columns="CLIENTID" ref-table="CLIENTS" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="PURCHASESPRODUCTS" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="PURCHASEID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>
+      <column name="PRODUCTID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="SYS_PK_11114" columns="PURCHASEID,PRODUCTID"/>
+      <foreign-key name="SYS_FK_11113" columns="PRODUCTID" ref-table="PRODUCTS" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="SYS_FK_11112" columns="PURCHASEID" ref-table="PURCHASES" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="STATUSES" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NAME" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="SYS_PK_11540" columns="ID"/>
+    </table>
+    <table name="TAGS" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="SYS_PK_10908" columns="ID"/>
+    </table>
+  </data-source>
+  <data-source name="HSQLDB (Remote) - invoices@localhost" uuid="16529a67-a78f-46b5-a682-6716cd978fea">
+    <database-info product="HSQL Database Engine" version="2.3.4" jdbc-version="4.0" driver-name="HSQL Database Engine Driver" driver-version="2.3.4">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/>
+    <schema name="PUBLIC" catalog="PUBLIC"/>
+    <table name="CLIENTS" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ADDRESS" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="AMOUNTCENTS" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="AMOUNTCURRENCY" sqlType="CHARACTER" precision="3" scale="0" nullable="false" jdbcType="1" def="J1BMTic="/>
+      <column name="ACTIVE" sqlType="BOOLEAN" precision="0" scale="0" nullable="false" jdbcType="16" def="VFJVRQ=="/>
+      <column name="STATUSID" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <primary-key name="SYS_PK_10120" columns="ID"/>
+      <foreign-key name="SYS_FK_10156" columns="STATUSID" ref-table="STATUSES" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="CUSTOMER" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>
+      <column name="FIRSTNAME" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LASTNAME" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="STREET" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CITY" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10165" columns="ID"/>
+    </table>
+    <table name="INVOICE" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>
+      <column name="CUSTOMERID" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="TOTAL" sqlType="DECIMAL" precision="128" scale="0" nullable="true" jdbcType="3"/>
+      <primary-key name="SYS_PK_10169" columns="ID"/>
+      <foreign-key name="SYS_FK_10170" columns="CUSTOMERID" ref-table="CUSTOMER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="ITEM" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="INVOICEID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ITEM" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>
+      <column name="PRODUCTID" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="QUANTITY" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="COST" sqlType="DECIMAL" precision="128" scale="0" nullable="true" jdbcType="3"/>
+      <primary-key name="SYS_PK_10174" columns="INVOICEID,ITEM"/>
+      <foreign-key name="SYS_FK_10175" columns="INVOICEID" ref-table="INVOICE" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="SYS_FK_10176" columns="PRODUCTID" ref-table="PRODUCT" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="PRODUCT" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>
+      <column name="NAME" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PRICE" sqlType="DECIMAL" precision="128" scale="0" nullable="true" jdbcType="3"/>
+      <primary-key name="SYS_PK_10167" columns="ID"/>
+    </table>
+    <table name="PRODUCTS" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="TYPE" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="AVAILABLE" sqlType="BOOLEAN" precision="0" scale="0" nullable="false" jdbcType="16" def="VFJVRQ=="/>
+      <column name="PRICECENTS" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="PRICECURRENCY" sqlType="CHARACTER" precision="3" scale="0" nullable="false" jdbcType="1" def="J1BMTic="/>
+      <column name="LENGTH" sqlType="BIGINT" precision="64" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="SYS_PK_10092" columns="ID"/>
+    </table>
+    <table name="PRODUCTSTAGS" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="PRODUCTID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>
+      <column name="TAGID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="SYS_PK_10111" columns="PRODUCTID,TAGID"/>
+      <foreign-key name="SYS_FK_10112" columns="PRODUCTID" ref-table="PRODUCTS" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="SYS_FK_10113" columns="TAGID" ref-table="TAGS" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="PURCHASES" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="CLIENTID" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="CREATEDATE" sqlType="TIMESTAMP" precision="26" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="SYS_PK_10134" columns="ID"/>
+      <foreign-key name="SYS_FK_10136" columns="CLIENTID" ref-table="CLIENTS" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="PURCHASESPRODUCTS" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="PURCHASEID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>
+      <column name="PRODUCTID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="SYS_PK_10142" columns="PURCHASEID,PRODUCTID"/>
+      <foreign-key name="SYS_FK_10144" columns="PRODUCTID" ref-table="PRODUCTS" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="SYS_FK_10143" columns="PURCHASEID" ref-table="PURCHASES" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="STATUSES" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NAME" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="SYS_PK_10151" columns="ID"/>
+    </table>
+    <table name="TAGS" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="SYS_PK_10106" columns="ID"/>
+    </table>
+  </data-source>
+</component>
